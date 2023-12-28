@@ -45,4 +45,6 @@ jobs:
           virtualenvs-in-project: true
           installer-parallel: true
       - name: Install project
-        run: poetry install --no-interaction
+        run: |
+          poetry config http-basic.finfrog ${{ secrets.FINFROG_REPO_USER }} ${{ secrets.FINFROG_REPO_PASSWORD }}
+          poetry install --no-interaction
